@@ -1,15 +1,14 @@
 
+const inputElements = document.querySelectorAll("input");
+
 function showtext() {
   var showElement = document.getElementById("form-result");
-  var inputElements = document.querySelectorAll("input");
+  showElement.innerHTML = "<p>Captured values:</p><ul>";
+  var inputElements = document.querySelectorAll(".input-field");
   for (var i = 0; i < inputElements.length; i++) {
-    showElement.innerHTML += inputElements[i].id + ": " + inputElements[i].value + "<br>";
+    showElement.innerHTML += `<li>${inputElements[i].id}: ${inputElements[i].value}`;
   }
-    // if (inputElements[i].value == "") {
-    //   showElement.innerHTML = "Please fill in all fields";
-    //   return;
-    // }
-
+  showElement.innerHTML += "</ul>";
 }
 
 
@@ -17,11 +16,16 @@ function hidetext() {
   document.getElementById("form-result").innerHTML = "";
 }
 
-(() => {
-  'use strict';
+Array.prototype.slice.call(inputElements).forEach(function (inputElement) {
+  inputElement.addEventListener('focus', function () {
+    inputElement.classList.add('focus');
+  });
+  inputElement.addEventListener('blur', function () {
+    inputElement.classList.remove('focus');
+    this.showtext();
+  });
+});
 
-
-})();
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
