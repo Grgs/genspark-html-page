@@ -1,6 +1,6 @@
 
 
-// const inputElements = document.querySelectorAll(".input-field");
+const inputElements = document.querySelectorAll(".input-field");
 
 function generateInputFields() {
   var stringList = "<p>Captured values:</p><ul>";
@@ -16,6 +16,10 @@ function saveFieldValues() {
   const fieldValues = generateInputFields();
   document.getElementById("form-result").innerHTML = fieldValues;
   localStorage.setItem("fieldValues", fieldValues);
+}
+
+function loadFieldValues() {
+  document.getElementById("form-output").innerHTML = localStorage.getItem("fieldValues");
 }
 
 
