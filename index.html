@@ -20,17 +20,19 @@
 <html>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <h1 class="text-center">Customer Registeration</h1>
-    <form action="" class="needs-validation" novalidate>
+    <form action="" class="needs-validation">
       <div class='container'>
+
         <div class="row">
-          <div class="input form-group">
+          <div class="col form-group">
             <label for="firstName" class="form-label">
               First Name
               <input type="text" name="firstName" id="firstName" placeholder="first name"
                 class="form-control input-field" required /></label>
-            <div class='valid-feedback'>Please enter your name</div>
+          </div>
+          <div class="col form-group">
             <label for="lastName">Last Name
               <input type="text" name="lastName" id="lastName" placeholder="last name"
                 class="form-control input-field" /></label>
@@ -38,7 +40,7 @@
           <div class="row form-group">
             <label for="email" class="form-label">
               Email
-              <input type="email" name="email" id="email" placeholder="email" class="form-control input-lg"
+              <input type="email" name="email" id="email" placeholder="email" class="form-control input-lg input-field"
                 required /></label>
           </div> <!-- /email row -->
           <div class='row form-group'>
@@ -56,22 +58,28 @@
 
             </div>
           </div> <!-- /password row -->
-          <div class='row'>
+          <div class='row form-group'>
+            <label for="websiteUrl" class="form-label">
+              Personal Website
+              <input type="text" name="websiteUrl" id="websiteUrl" placeholder="www.example.com"
+                class="form-control input-field" /></label>
+          </div> <!-- /websiteUrl row -->
+          <div class='row form-group'>
             <label for="address" class="form-label">
               Address
               <input type="text" name="address" id="address" placeholder="address"
                 class="form-control input-field" /></label>
 
           </div> <!-- /address row -->
-          <div class='row'>
+          <div class='row form-group'>
             <div class='col'>
               <label for="city">City
-                <input type="text" name="city" id="city" placeholder="city" class="form-control input-field" /></label>
+                <input type="url" name="city" id="city" placeholder="city" class="form-control input-field" /></label>
             </div>
             <div class='col'>
               <label for="state">State
-                <select name="state" id="state" class="form-control input-field">
-                  <option value="  "> </option>
+                <select name="state" id="state" class="form-select input-field">
+                  <option value=""> </option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
                   <option value="AZ">Arizona</option>
@@ -129,30 +137,29 @@
             <div class='col'>
               <label for="zip">Zipcode
                 <input type="text" name="zip" id="zip" placeholder="zip" class="form-control input-field" /></label>
-
             </div>
           </div> <!-- /city, state zipcode row -->
           <div class='row'>
-            <div class='col'>
+            <div class='col form-group'>
               <label for="phone">Phone
                 <input type="tel" name="phone" id="phone" placeholder="phone" class="form-control input-field"
                   required /></label>
-
             </div>
-            <div class='col'>
+            <div class='col form-group'>
               <label for="birthday">Birthday
                 <input type="date" name="birthday" id="birthday" placeholder="birthday" class="form-control input-field"
                   required /></label>
             </div>
           </div> <!-- /phone and birthday row -->
         </div> <!-- /forms -->
+
         <hr class="mb-4" />
         <div class="row">
           <div class='col'>
             <button type="submit" class="btn btn-primary">Register</button>
           </div>
           <div class='col'>
-            <input type="button" value="See values" onclick="showtext()" class="btn btn-secondary" />
+            <input type="button" value="Save values" onclick="saveFieldValues()" class="btn btn-secondary" />
           </div>
           <div class='col'>
             <button type='reset' onclick="hidetext()" class="btn btn-secondary"> Cancel </button>

@@ -1,14 +1,21 @@
 
-const inputElements = document.querySelectorAll("input");
 
-function showtext() {
-  var showElement = document.getElementById("form-result");
-  showElement.innerHTML = "<p>Captured values:</p><ul>";
+// const inputElements = document.querySelectorAll(".input-field");
+
+function generateInputFields() {
+  var stringList = "<p>Captured values:</p><ul>";
   var inputElements = document.querySelectorAll(".input-field");
   for (var i = 0; i < inputElements.length; i++) {
-    showElement.innerHTML += `<li>${inputElements[i].id}: ${inputElements[i].value}`;
+    stringList += `<li>${inputElements[i].id}: ${inputElements[i].value}`;
   }
-  showElement.innerHTML += "</ul>";
+  stringList += "</ul>";
+  return stringList;
+}
+
+function saveFieldValues() {
+  const fieldValues = generateInputFields();
+  document.getElementById("form-result").innerHTML = fieldValues;
+  localStorage.setItem("fieldValues", fieldValues);
 }
 
 
