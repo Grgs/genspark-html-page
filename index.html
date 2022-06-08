@@ -41,20 +41,20 @@
             <label for="email" class="form-label">
               Email
               <input type="email" name="email" id="email" placeholder="email" class="form-control input-lg input-field"
-                required /></label>
+                onblur="validateEmail()" required /></label>
           </div> <!-- /email row -->
           <div class='row form-group'>
             <div class='col'>
               <label for="password" class="form-label">
                 Password
                 <input type="password" name="password" id="password" placeholder="password"
-                  class="form-control input-field" required /></label>
+                  class="form-control input-field" onblur="validatePassword()" required /></label>
             </div>
             <div class='col'>
               <label for="confirmPassword" class="form-label">
                 Confirm Password
                 <input type="password" name="confirmPassword" id="confirmPassword" placeholder="confirm password"
-                  class="form-control input-field" required /></label>
+                  class="form-control input-field" onblur="validateConfirmPassword()" required /></label>
 
             </div>
           </div> <!-- /password row -->

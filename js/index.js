@@ -11,8 +11,8 @@
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
+          event.preventDefault();
+          event.stopPropagation();
         }
 
         form.classList.add('was-validated')
@@ -57,25 +57,49 @@ function hidetext() {
   document.getElementById("form-result").innerHTML = "";
 }
 
-// Array.prototype.slice.call(inputElements).forEach(function (inputElement) {
-//   inputElement.addEventListener('focus', function () {
-//     inputElement.classList.add('focus');
-//   });
-//   inputElement.addEventListener('blur', function () {
-//     inputElement.classList.remove('focus');
-//     this.showtext();
-//   });
-// });
 
 
+function validateConfirmPassword() {
+  let passwordElement = document.getElementById("password");
+  let confirmPasswordElement = document.getElementById("confirmPassword");
+  confirmPasswordElement.classList.remove("is-invalid");
+  confirmPasswordElement.classList.remove("is-valid");
+  if (passwordElement.value !== confirmPasswordElement.value) {
+    confirmPasswordElement.classList.add("is-invalid");
+  } else {
+    confirmPasswordElement.classList.add("is-valid");
+  }
+}
 
-// function validatePassword() {
-//   var password = document.getElementById("password").value;
-//   var confirmPassword = document.getElementById("confirmPassword").value;
+function validatePassword() {
+  let passwordElement = document.getElementById("password");
+  let confirmPasswordElement = document.getElementById("confirmPassword");
+  passwordElement.classList.remove("is-invalid");
+  confirmPasswordElement.classList.remove("is-invalid");
+  passwordElement.classList.remove("is-valid");
+  confirmPasswordElement.classList.remove("is-valid");
+  if (passwordElement.value.length < 4) {
+    passwordElement.classList.add("is-invalid");
+  } else {
+    passwordElement.classList.add("is-valid");
+  }
+}
 
-//   if (password != confirmPassword) {
-//     document.getElementById("confirmPassword").setCustomValidity("Passwords Don't Match");
-//   } else {
-//     document.getElementById("confirmPassword").setCustomValidity('');
-//   }
-// }
+const validEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+function validateEmail() {
+  let emailElement = document.getElementById("email");
+  emailElement.classList.remove("is-invalid");
+  emailElement.classList.remove("is-valid");
+  if (validEmail(emailElement.value)) {
+    emailElement.classList.add("is-valid");
+  } else {
+    emailElement.classList.add("is-invalid");
+  }
+}
