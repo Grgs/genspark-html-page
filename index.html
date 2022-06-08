@@ -2,7 +2,6 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta lang="us-en" />
   <title>Customer Registeration</title>
   <meta name="description" content="Michael's customer registeration page" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,12 +16,13 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
 </head>
-<html>
+<html lang="en-US">
 
 <body>
   <div class="container-fluid">
-    <h2 class="text-center h2">Customer Registeration</h2>
-    <form action="" class="needs-validation">
+    <h2 class="text-center align-items-center fs-4 lh-lg" id="page-title">
+      Customer Registeration</h2>
+    <form action="" class="needs-validation" novalidate>
       <div class='container'>
 
         <div class="row">
@@ -155,11 +155,14 @@
 
         <hr class="mb-4" />
         <div class="row">
-          <div class='col'>
+          <!-- <div class='col'>
             <button type="submit" onclick="saveFieldValues()" class="btn btn-primary">Register</button>
+          </div> -->
+          <div class='col'>
+            <input type="button" value="Save values" onclick="saveFieldValues()" class="btn btn-primary" />
           </div>
           <div class='col'>
-            <input type="button" value="See values" onclick="saveFieldValues()" class="btn btn-secondary" />
+            <input type="button" value="See values" onclick="printFieldValues()" class="btn btn-secondary" />
           </div>
           <div class='col'>
             <button type='reset' onclick="hidetext()" class="btn btn-secondary"> Cancel </button>

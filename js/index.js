@@ -1,6 +1,27 @@
 
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+
+        form.classList.add('was-validated')
+      }, false);
+    });
+})();
 
 const inputElements = document.querySelectorAll(".input-field");
+
 
 function generateInputFields() {
   var stringList = "<p>Captured values:</p><ul>";
@@ -14,8 +35,17 @@ function generateInputFields() {
 
 function saveFieldValues() {
   const fieldValues = generateInputFields();
-  document.getElementById("form-result").innerHTML = fieldValues;
   localStorage.setItem("fieldValues", fieldValues);
+  // add "was-validated" class to all forms
+  const forms = document.querySelectorAll(".needs-validation");
+  forms.forEach((form) => {
+    form.classList.add("was-validated");
+  });
+
+}
+function printFieldValues() {
+  const fieldValues = generateInputFields();
+  document.getElementById("form-result").innerHTML = fieldValues;
 }
 
 function loadFieldValues() {
@@ -27,36 +57,16 @@ function hidetext() {
   document.getElementById("form-result").innerHTML = "";
 }
 
-Array.prototype.slice.call(inputElements).forEach(function (inputElement) {
-  inputElement.addEventListener('focus', function () {
-    inputElement.classList.add('focus');
-  });
-  inputElement.addEventListener('blur', function () {
-    inputElement.classList.remove('focus');
-    this.showtext();
-  });
-});
+// Array.prototype.slice.call(inputElements).forEach(function (inputElement) {
+//   inputElement.addEventListener('focus', function () {
+//     inputElement.classList.add('focus');
+//   });
+//   inputElement.addEventListener('blur', function () {
+//     inputElement.classList.remove('focus');
+//     this.showtext();
+//   });
+// });
 
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict';
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach((form) => {
-    form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-
-})();
 
 
 // function validatePassword() {
